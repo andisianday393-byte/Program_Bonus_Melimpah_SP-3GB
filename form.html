@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Registrasi Outlet</title>
+    <style>
+        :root {
+            --im3-yellow: #FFEF00;
+            --im3-magenta: #E3007E; 
+            --im3-black: #1a1a1a;
+            --im3-white: #ffffff;
+            --im3-gray: #f4f4f4;
+        }
+
+        body {
+            background: #FFEF00;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Mengubah susunan ke bawah untuk menampung note */
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        /* Pengaturan Logo Kanan */
+        .header-image {
+            position: absolute;
+            right: 40px; 
+            top: 0px;
+        }
+
+        /* Pengaturan Logo Kiri */
+        .header-image-left {
+            position: absolute;
+            left: 15px; 
+            top: -30px;
+        }
+
+        /* Ukuran Gambar Logo */
+        .header-image img {
+            width: 80px; 
+            height: auto;
+            display: block;
+        }
+        .header-image-left img {
+            width: 150px; 
+            height: auto;
+            display: block;
+        }
+
+        /* KOTAK FORM UTAMA */
+        .container {
+            background: linear-gradient(135deg, #FFEF00 0%, #D1C4E9 50%, #E91E63 100%);;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 330px;
+            box-sizing: border-box;
+            margin-top: 35px;
+            position: relative; /* Penting agar posisi menu titik 3 presisi */
+        }
+        .container:hover {
+            transform: translateY(5px);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative; 
+            padding-bottom: 10px; 
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%); 
+            width: 185px;            
+            height: 5px;            
+            background-color: #4a4a4a;  
+            border-radius: 2px;    
+        }
+
+        /* --- STYLING TOMBOL TITIK 3 (MENU) --- */
+        .menu-dropdown-wrapper {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+        }
+
+        .three-dots-btn {
+            background: none;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+            padding: 0;
+            margin: 0;
+            transition: background 0.2s;
+        }
+
+        .three-dots-btn:hover {
+            background: var(--im3-gray);
+        }
+
+        .three-dots-btn span {
+            width: 4px;
+            height: 4px;
+            background-color: #555;
+            border-radius: 50%;
+            display: block;
+        }
+
+        /* ISI MENU DROPDOWN */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            background-color: white;
+            min-width: 130px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        /* Tampilkan menu saat class 'show' aktif */
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--im3-gray);
+            color: var(--im3-magenta);
+        }
+
+        /* Pembatas khusus untuk link WhatsApp Admin */
+        .dropdown-content a.admin-link {
+            border-top: 1px solid #eee;
+            color: #25D366; /* Warna khas WhatsApp */
+        }
+        
+        .dropdown-content a.admin-link:hover {
+            background-color: #e8fced;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- FORM ELEMENTS --- */
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #e91e63;
+            box-shadow: 0 0 5px rgba(233, 30, 99, 0.2);
+        }
+
+        /* Tombol Submit Utama */
+        .btn-submit {
+            display: block; 
+            margin: 20px auto 0 auto; 
+            width: 70%;
+            padding: 12px;
+            background: #333333;
+            border: none;
+            border-radius: 10px;
+            color: var(--im3-white);
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* STYLING CATATAN (NOTE) DI BAWAH KOTAK FORM */
+        .form-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.5); /* Warna hitam samar/transparan */
+            font-weight: 500;
+            max-width: 320px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-image-left">
+        <img src="img/gandhiyo.png" alt="Logo Kiri">
+    </div>
+    <div class="header-image">
+        <img src="img/logo-im3.png" alt="Logo IM3">
+    </div>
+
+    <div class="container">
+        
+        <!-- MENU TITIK TIGA ELEGAN -->
+        <div class="menu-dropdown-wrapper">
+            <button class="three-dots-btn" id="menuBtn" title="Menu Navigasi">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="index.html">Beranda</a>
+                <a href="paket1.html">Paket Seru</a>
+                <a href="paket2.html">Paket Spesial</a>
+                <a href="paket3.html">Paket Super</a>
+                <a href="https://wa.me/6285759695969" target="_blank" class="admin-link">Hubungi Admin</a>
+            </div>
+        </div>
+
+        <h2>Registrasi Paket</h2>
+        
+        <form id="whatsappForm">
+            <div class="form-group">
+                <label for="id_outlet">ID Outlet</label>
+                <input type="text" id="id_outlet" name="id_outlet" placeholder="Cek Simpel" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nama_outlet">Nama Outlet</label>
+                <input type="text" id="nama_outlet" name="nama_outlet" placeholder="Nama Toko" required>
+            </div>
+
+            <div class="form-group">
+                <label for="kontak_outlet">Kontak</label>
+                <input type="tel" id="kontak_outlet" name="kontak_outlet" placeholder="08xxxxxx" required>
+            </div>
+
+            <div class="form-group">
+                <label for="paket">Paket</label>
+                <select id="paket" name="paket" onchange="updateBonus()" required>
+                    <option value="">Pilih Paket</option>
+                    <option value="basic">Paket Seru 100 Pcs</option>
+                    <option value="premium">Paket Spesial 200 Pcs</option>
+                    <option value="super">Paket Super 500 Pcs</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bonus">Bonus Paket</label>
+                <select id="bonus" name="bonus" required>
+                    <option value="">Pilih Paket Terlebih Dahulu</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="pembayaran">Pembayaran</label>
+                <select id="pembayaran" name="pembayaran">
+                    <option value="">Pilih Pembayaran</option>
+                    <option value="Transfer Bank">Transfer Bank</option>
+                    <option value="E-Wallet">E-Wallet</option>
+                    <option value="Tunai">Tunai</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">SUBMIT</button>
+        </form>
+    </div>
+
+    <!-- NOTE SAMAR DI BAWAH KOTAK FORM -->
+    <div class="form-note">
+        *Submit dan izinkan halaman web membuka Aplikasi pihak ke tiga, lalu kirim form Registrasi Paket ke-Admin WA.
+    </div>
+
+<script>
+    // LOGIKA AKTIVASI MENU TITIK TIGA
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // Buka/tutup menu saat tombol titik tiga diklik
+    menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle('show');
+    });
+
+    // Tutup menu otomatis jika pengguna mengklik area luar menu
+    document.addEventListener('click', function() {
+        if (dropdownMenu.classList.contains('show')) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+
+    // LOGIKA UPDATE BONUS FORM
+    function updateBonus() {
+        const paket = document.getElementById("paket").value;
+        const bonusSelect = document.getElementById("bonus");
+        bonusSelect.innerHTML = "";
+
+        let options = [];
+        if (paket === "basic") {
+            options = ["Pilih Bonus...", "Kipas Angin", "Rice Cooker", "CashBack SALMO", "Bonus SP"];
+        } else if (paket === "premium") {
+            options = ["Pilih Bonus...", "HIFI AIR + SALMO 190K", "Voucher Data 600K", "CashBack SALMO", "Bonus SP"];
+        } else if (paket === "super") {
+            options = ["Pilih Bonus...", "TV LED", "Mesin Cuci", "Smart Phone", "CashBack SALMO"];
+        } else {
+            options = ["Pilih Paket Terlebih Dahulu"];
+        }
+
+        options.forEach(function(item) {
+            let el = document.createElement("option");
+            el.textContent = item;
+            el.value = (item === "Pilih Bonus..." || item === "Pilih Paket Terlebih Dahulu") ? "" : item;
+            bonusSelect.appendChild(el);
+        });
+    }
+
+    // LOGIKA KIRIM WHATSAPP
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('whatsappForm');
+        
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                try {
+                    const idOutlet = document.getElementById('id_outlet')?.value || '-';
+                    const namaOutlet = document.getElementById('nama_outlet')?.value || '-';
+                    const kontak = document.getElementById('kontak_outlet')?.value || '-';
+                    
+                    const paketEl = document.getElementById('paket');
+                    const paketText = paketEl ? paketEl.options[paketEl.selectedIndex].text : '-';
+                    
+                    const bonus = document.getElementById('bonus')?.value || '-';
+                    const pembayaran = document.getElementById('pembayaran')?.value || '-';
+
+                    const nomorWA = "6285759695969"; 
+                    
+                    let teksTambahan = "";
+                    if (pembayaran === "E-Wallet" || pembayaran === "Transfer Bank") {
+                        teksTambahan = `\n\n_Silahkan Kirim Bukti Transfernya_`;
+                    }
+                    
+                    const pesanRaw = `*REGISTRASI PAKET*\n` +
+                                     `--------------------------------------\n` +
+                                     `*ID Outlet:* ${idOutlet}\n` +
+                                     `*Nama Outlet:* ${namaOutlet}\n` +
+                                     `*Kontak:* ${kontak}\n` +
+                                     `*Paket:* ${paketText}\n` +
+                                     `*Bonus:* ${bonus}\n` +
+                                     `*Pembayaran:* ${pembayaran}\n` +
+                                     `-----------------------------------------`
+                                     + teksTambahan;
+
+                    const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanRaw)}`;
+                    window.open(url, '_blank');
+
+                } catch (error) {
+                    console.error("Gagal mengirim data:", error);
+                    alert("Terjadi kesalahan teknis saat mencoba membuka WhatsApp.");
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

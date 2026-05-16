@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IM3 Bonus Melimpah - Paket Spesial 200 Pcs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette Baru: Kuning, Ungu Muda, Magenta */
+            --im3-yellow: #FFEF00;
+            --soft-purple: #D1C4E9;
+            --vibrant-magenta: #E91E63;
+            --main-gradient: linear-gradient(135deg, #FFEF00 0%, #D1C4E9 50%, #E91E63 100%);
+            --bg-gray: #f8f9fa;
+            --text-main: #2d3436;
+        }
+
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+        html {
+          overflow-x: hidden;
+        }
+        .hero-section {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            padding: 0 20px;
+            background: var(--main-gradient);
+            color: var(--im3-black);
+            border-bottom: 4px solid var(--im3-yellow);
+            overflow: visible;
+            margin-bottom: 10px;
+        }
+
+        .header-text {
+            text-align: left;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            margin: 0;
+            margin-left: 50px;
+            font-size: 1.1rem; /* Diperkecil sedikit agar pas */
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .hero-section p {
+            margin: 0;
+            margin-left: 50px;
+            font-size: 1.1rem;
+            color: var(--im3-red);
+            font-weight: 700;
+        }
+
+        .header-image {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .header-image img {
+            width: 110px; /* Ukuran logo disesuaikan */
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); 
+        }
+
+        /* --- IMAGE SLIDER --- */
+        .slider-container {
+            width: 100%;
+            position: relative;
+            background: #fff;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        /* Tombol Kembali Mengambang & Transparan */
+.back-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    
+    /* Efek Transparan (Putih sangat tipis agar teks di belakangnya samar terlihat) */
+    background: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: blur(3px); /* Memberikan efek blur halus pada teks di bawahnya */
+    color: #333333; /* Warna ikon panah dibuat tegas agar tetap kontras */
+    
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bingkai tipis transparan */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    
+    /* z-index tinggi agar tombol berada di lapisan paling atas */
+    z-index: 999; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Efek saat ditekan (Hover/Active) */
+.back-btn:active {
+    background: rgba(255, 255, 255, 0.6); /* Menjadi sedikit lebih jelas saat diklik */
+    transform: translateY(-50%) scale(0.9);
+}
+
+        /* ... kode CSS kamu yang lain ... */
+        .nav-btn {
+            position: absolute;
+            top: 50%; /* Memposisikan di tengah secara vertikal */
+            transform: translateY(-50%); /* Menarik kembali 50% tinggi tombol agar pas di tengah */
+            background: rgba(255, 255, 255, 0.7); /* Background putih transparan agar terlihat modern */
+            color: #333; /* Warna panah gelap */
+            border: none;
+            width: 40px; /* Lebar tombol sama dengan tinggi agar bulat sempurna */
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 1000;
+            display: flex; /* Menggunakan flex untuk memusatkan simbol panah */
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%; /* Membuat tombol menjadi bulat sempurna */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Memberikan sedikit bayangan agar timbul */
+            transition: 0.3s;
+        }
+
+        /* Posisi tombol kiri dan kanan dengan sedikit jarak dari pinggir */
+        .left-btn { 
+            left: 10px; 
+        }
+        
+        .right-btn { 
+            right: 10px; 
+        }
+
+        /* Efek saat ditekan atau hover */
+        .nav-btn:active { 
+            background: rgba(255, 255, 255, 1); 
+            transform: translateY(-50%) scale(0.9); /* Sedikit mengecil saat diklik */
+        }
+
+
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            z-index: 10;
+        }
+
+        /* --- PRODUCT INFO --- */
+        .product-info {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .price-section {
+            color: var(--shopee-orange);
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        .price-symbol { font-size: 1.2rem; font-weight: 700; }
+        .price-amount { font-size: 1.8rem; font-weight: 800; }
+
+        .product-title {
+            font-size: 1rem;
+            line-height: 1.4;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .mall-badge {
+            background: var(--im3-red);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-weight: 800;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        /* --- PACKAGE SELECTION (VARIANT) --- */
+        .section-box {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            color: #757575;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .variant-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .variant-card {
+            border: 1px solid #e8e8e8;
+            border-radius: 4px;
+            padding: 12px;
+            position: relative;
+        }
+
+        .variant-card.active {
+            border-color: var(--shopee-orange);
+            background: #fff5f3;
+        }
+
+        .variant-card h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--im3-red);
+        }
+
+        .variant-card .bonus-list {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+
+        /* --- DESCRIPTION --- */
+        .description-content {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .description-content ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+        
+                /* Gaya untuk Pilihan Paket */
+        .package-selector {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .package-link {
+            display: block;
+            padding: 10px 0;
+            color: #ee4d2d; /* Warna orange Shopee */
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f1f1f1;
+            font-weight: 500;
+        }
+
+        .package-link:last-child {
+            border-bottom: none;
+        }
+
+        /* Kelas untuk paket yang sedang aktif (tidak bisa diklik) */
+        .package-link.active {
+            color: #999 !important; /* Abu-abu */
+            pointer-events: none;    /* Tidak bisa diklik */
+            cursor: default;
+        }
+
+        .package-link::before {
+            content: "• ";
+            margin-right: 5px;
+        }
+
+
+        /* --- FOOTER ACTION --- */
+        .footer-action {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: #fff;
+            display: flex;
+            border-top: 1px solid #eee;
+            z-index: 100;
+        }
+
+        .btn-icon {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            border-right: 1px solid #eee;
+        }
+
+        .btn-buy {
+            flex: 3;
+            background: var(--main-gradient);
+            color: var(--im3-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Utility */
+        .highlight { color: var(--shopee-orange); font-weight: 700; }
+    </style>
+</head>
+<body>
+<header class="hero-section">
+    <!-- Tombol Kembali (Mengambang di Atas) -->
+    <a href="index.html" class="back-btn">&#10094;</a>
+
+    <!-- Margin kiri dihapus agar teks kembali normal dan berada di bawah tombol -->
+    <div class="header-text">
+        <h1>Bonus Melimpah</h1>
+        <p>PAKET SPESIAL 200 PCS</p>
+    </div>
+    
+    <div class="header-image">
+        <img src="img/sp3gb.png" alt="Logo IM3">
+    </div>
+</header>
+
+    <!-- Gambar Slider ala Shopee -->
+    <div class="slider-container">
+        <!-- Tombol Navigasi Mengambang -->
+        <button id="prevBtn" class="nav-btn left-btn" style="display: none;">&#10094;</button>
+        <button id="nextBtn" class="nav-btn right-btn">&#10095;</button>
+              
+        <div class="slider" id="mainSlider">
+            <!-- Ganti src dengan gambar produk Anda -->
+            <img src="img/hifi.jpg" alt="Produk 1">
+            <img src="img/voucher.jpg" alt="Produk 2">
+            <img src="img/salmo2.png" alt="Produk 3">
+            <img src="img/bonussp2.jpg" alt="Produk 4">
+            </div>
+        <div class="slider-dots">1/4</div>
+    </div>
+<!-- Tambahkan margin-top: 10px untuk memberi jarak dari gambar -->
+<div style="width: 100%; overflow: hidden; margin-top: 10px;">
+    <div style="width: 110%; height: 4px; background-color: var(--im3-yellow); margin-left: -5%;"></div>
+</div>
+        <!-- Info Produk Utama -->
+    <div class="product-info">
+        <div class="price-section">
+            <span class="price-symbol">Rp</span>
+            <span class="price-amount" id="displayPrice">5.000.000</span>
+        </div>
+        <div class="product-title">
+            <b>PAKET SERU : SP 3GB 200 PCS</b>
+            <div style="font-size: 0.8rem; color: #757575;">
+                Pilih Bonusnya: Hifi Air HKM+SALMO 190K, Voucher Data Senilai 600k, Cashback Salmo, Bonus SP.
+            </div>
+        </div>
+
+        <!-- GARIS KUNING TEPAT DI BAWAH INFO PRODUK -->
+        <!-- overflow: hidden mencegah scroll horizontal -->
+        <div style="width: calc(100% + 30px); overflow: hidden; margin-left: -15px; margin-top: 15px; margin-bottom: -15px;">
+            <div style="width: 100%; height: 4px; background-color: var(--im3-yellow);"></div>
+        </div>
+    </div>
+    
+            <!-- Pilihan Paket Lainnya -->
+    <!-- Pilihan Paket Lainnya -->
+<div class="package-selector">
+    <div class="section-title">Pilihan Paket Lainnya:</div>
+    
+    <!-- Link Paket Seru sekarang aktif (bisa diklik/berwarna orange) -->
+    <a href="paket1.html" class="package-link">PAKET SERU : SP 3GB 100 PCS</a>
+    
+    <!-- Link Paket Spesial diberikan class "active" (jadi abu-abu & tidak bisa diklik) -->
+    <a href="paket2.html" class="package-link active">PAKET SPESIAL : SP 3GB 200 PCS</a>
+    
+    <a href="paket3.html" class="package-link">PAKET SUPER : SP 3GB 500 PCS</a>
+    <a href="index.html" class="package-link">KEMBALI KE-BERANDA</a>
+</div>
+
+
+  
+   <!-- Deskripsi -->
+    <div class="section-box" style="margin-bottom: 60px;">
+        <div class="section-title">SYARAT & KETENTUAN</div>
+        <div class="description-content">
+            <ul>
+                <li><strong>Pembayaran:</strong> Cash & Transfer Barang di Terima.</li>
+                <li>Berlaku kelipatan pembelian.</li>
+                <li><strong>Hadiah Langsung:</strong> Hifi Air, Cashback Salmo, Voucher Data, Bonus SP.</li>
+                <li><strong>Hadiah Elektronik:</strong> Sistem inden (1 - 2 minggu baru diantar).</li>
+                <li>Harga Per pcs Normal di harga Retail Sekarang jadi lebih hemat.</li>
+                <li><strong>Periode Program:</strong> <span class="highlight">15 - 30 Mei 2026</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Tombol Beli ala Shopee -->
+    <div class="footer-action">
+        <a href="form.html" class="btn-buy">Ambil Paketnya</a>
+    </div>
+<script>
+const slider = document.getElementById('mainSlider');
+const dots = document.querySelector('.slider-dots');
+const container = document.querySelector('.slider-container');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID = 0;
+let currentIndex = 0;
+const totalImages = 4;
+
+function updateNavButtons() {
+    prevBtn.style.display = (currentIndex === 0) ? 'none' : 'flex';
+    nextBtn.style.display = (currentIndex === totalImages - 1) ? 'none' : 'flex';
+}
+
+function setPositionByIndex() {
+    const sliderWidth = container.offsetWidth;
+    currentTranslate = currentIndex * -sliderWidth;
+    prevTranslate = currentTranslate;
+    
+    slider.style.transition = 'transform 0.5s ease-out';
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+    
+    dots.innerText = `${currentIndex + 1}/${totalImages}`;
+    updateNavButtons();
+}
+
+nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentIndex < totalImages - 1) {
+        currentIndex++;
+        setPositionByIndex();
+    }
+});
+
+prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentIndex > 0) {
+        currentIndex--;
+        setPositionByIndex();
+    }
+});
+
+// Touch Logic
+slider.addEventListener('touchstart', (e) => {
+    startPos = e.touches[0].clientX;
+    isDragging = true;
+    slider.style.transition = 'none';
+});
+
+slider.addEventListener('touchmove', (e) => {
+    if (isDragging) {
+        const currentPosition = e.touches[0].clientX;
+        currentTranslate = prevTranslate + currentPosition - startPos;
+        slider.style.transform = `translateX(${currentTranslate}px)`;
+    }
+});
+
+slider.addEventListener('touchend', () => {
+    isDragging = false;
+    const movedBy = currentTranslate - prevTranslate;
+
+    if (movedBy < -50 && currentIndex < totalImages - 1) {
+        currentIndex += 1;
+    } else if (movedBy > 50 && currentIndex > 0) {
+        currentIndex -= 1;
+    }
+    setPositionByIndex();
+});
+
+slider.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+});
+
+window.addEventListener('resize', setPositionByIndex);
+setPositionByIndex();
+</script>
+</body>
+</html>

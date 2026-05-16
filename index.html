@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus Melimpah SP 3GB IM3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --im3-yellow: #FFEF00;
+            --im3-magenta: #E3007E; /* Warna Magenta Khas */
+            --im3-dark-yellow: #f1b211; 
+            --im3-black: #1a1a1a;
+            --im3-red: #e30613;
+            --im3-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--im3-yellow);
+            margin: 0;
+            padding: 0;
+            color: var(--im3-black);
+        }
+
+        /* --- HEADER SECTION --- */
+        /* Update Hero Section untuk memastikan konten tersebar merata */
+.hero-section {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Teks tetap di tengah */
+    align-items: center;
+    height: 100px;
+    padding: 0 15px; /* Sesuaikan padding */
+    background: linear-gradient(135deg, #FFEF00 0%, #D1C4E9 50%, #E91E63 100%); 
+    border-bottom: 4px solid var(--im3-magenta);
+}
+
+/* Pengaturan Logo Kanan */
+.header-image {
+    position: absolute;
+    right: 5px; 
+    top: -5px;
+}
+
+/* Pengaturan Logo Kiri (Sama ukurannya dengan yang kanan) */
+.header-image-left {
+    position: absolute;
+    left: -8px; 
+    top: -20px;
+}
+
+/* Pastikan kedua gambar logo memiliki ukuran yang sama */
+.header-image img {
+    width: 45px; /* Ukuran khusus logo kanan */
+    height: auto;
+    display: block;
+}
+.header-image-left img {
+    width: 85px; /* Sesuai permintaan ukuran yang sama */
+    height: auto;
+    display: block;
+}
+
+/* Tambahan: Pastikan teks tidak tertabrak logo pada layar kecil */
+.header-text {
+    max-width: 60%; 
+    z-index: 2;
+    transform: translateX(0px);
+}
+
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .header-text p {
+            margin: 3px 0 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 380px; 
+            margin: 25px auto 15px;
+            padding: 0 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* PERUBAHAN DISINI: Gradasi Kuning ke Magenta */
+        .package-card {
+            background: linear-gradient(135deg, #FFEF00 0%, #D1C4E9 50%, #E91E63 100%);
+            border: 3px solid #D1C4E9;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: rgba(0, 0, 0, 0.1); /* Overlay transparan agar warna gradasi tembus */
+            color: var(--im3-magenta);
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .card-header .number {
+            background: var(--im3-magenta);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-body {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            position: relative;
+        }
+
+        .package-info h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--im3-black);
+            font-weight: 800;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+        }
+
+        .package-info .price {
+            font-size: 0.80rem;
+            color: var(--im3-black); /* Putih agar lebih kontras di atas magenta */
+            font-weight: 800;
+            margin-top: 2px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .package-thumb {
+            position: absolute;
+            left: 55%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .package-thumb img {
+            width: 100px;
+            height: auto;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+
+        .sp-badge {
+            background: var(--im3-white); 
+            padding: 8px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 70px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 6;
+        }
+
+        .sp-badge span {
+            display: block;
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .sp-badge strong {
+            font-size: 1rem;
+            display: block;
+            color: var(--im3-magenta);
+        }
+
+        .card-footer {
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.15); 
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-pilih {
+            display: block;
+            background: var(--im3-white);
+            color: var(--im3-magenta);
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn-pilih:active {
+            transform: scale(0.95);
+            background: var(--im3-black);
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.7rem;
+            color: #444;
+        }
+                .admin-contact {
+            margin-top: 8px;
+            display: inline-block;
+            background: var(--im3-black);
+            color: var(--im3-white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .admin-contact:hover {
+            background: var(--im3-magenta);
+            transform: scale(1.05);
+        }
+
+        .admin-contact i {
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body onload="checkAccess()">
+    <!-- 1. Overlay Password (Tampilan Pertama) -->
+    <div id="gatekeeper" style="position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:sans-serif;">
+      <h1 style="font-size:25px; text-align: center; margin-top: -100px;">Hello, Selamat Datang...</h1> 
+      <h2 style="font-size:25px; text-align: center;">Program Bonus<br> Melimpah SP 3GB</h2>
+        <img src="img/sp3gb.png" alt="Logo" style="width:250px; margin-top:-50px;">
+        <h3 id="msg" style="text-align: left; margin-bottom: 20px;">Please Login...</h3>
+        <div id="login-form">
+            <input type="password" id="passInput" placeholder="Masukkan Password" style="padding:10px; border:1px solid #ccc; border-radius:5px;">
+            <button onclick="verify()" style="padding:10px 20px; background:#E91E63; color:white; border:none; border-radius:5px; cursor:pointer;">Masuk</button>
+        </div>
+    </div>
+
+    <!-- 2. Konten Asli Kamu (Dibungkus ID main-content) -->
+    <div id="main-content" style="display:none;">
+
+    <header class="hero-section">
+      <div class="header-image-left">
+        <img src="img/gandhiyo.png" alt="Logo Kiri">
+    </div>
+        <div class="header-text">
+            <h1>PROGRAM Bonus Melimpah</h1>
+            <p>Kartu Perdana 3GB IM3</p>
+        </div>
+        <div class="header-image">
+            <img src="img/logo-im3.png" alt="Logo IM3">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card-container">
+            
+            <!-- PAKET 1 -->
+            <div class="package-card">
+                <div class="card-header">
+                    <span class="number">1</span>
+                    <small>PROMO TERBATAS</small>
+                </div>
+                <div class="card-body">
+                    <div class="package-info">
+                        <h2>PAKET SERU</h2>
+                        <div class="price" style="font-size: 25px;">SP 3GB</div>
+                    </div>
+                    <div class="package-thumb">
+                        <!-- Placeholder image -->
+                        <img src="img/sp3gb.png" alt="Icon Paket">
+                    </div>
+                    <div class="sp-badge">
+                        <span>Isi Paket</span>
+                        <strong>100 PCS</strong>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="paket1.html" class="btn-pilih">LIHAT BONUS</a>
+                </div>
+            </div>
+
+            <!-- PAKET 2 -->
+            <div class="package-card">
+                <div class="card-header">
+                    <span class="number">2</span>
+                    <small>PALING POPULER</small>
+                </div>
+                <div class="card-body">
+                    <div class="package-info">
+                        <h2>PAKET SPESIAL</h2>
+                        <div class="price" style="font-size: 25px;">SP 3GB</div>
+                    </div>
+                    <div class="package-thumb">
+                        <img src="Img/sp3gb.png" alt="Icon Paket">
+                    </div>
+                    <div class="sp-badge">
+                        <span>Isi Paket</span>
+                        <strong>200 PCS</strong>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="paket2.html" class="btn-pilih">LIHAT BONUS</a>
+                </div>
+            </div>
+
+            <!-- PAKET 3 -->
+            <div class="package-card">
+                <div class="card-header">
+                    <span class="number">3</span>
+                    <small>BEST VALUE</small>
+                </div>
+                <div class="card-body">
+                    <div class="package-info">
+                        <h2>PAKET SUPER</h2>
+                        <div class="price" style="font-size: 25px;">SP 3GB</div>
+                    </div>
+                    <div class="package-thumb">
+                        <img src="Img/sp3gb.png" alt="Icon Paket">
+                    </div>
+                    <div class="sp-badge">
+                        <span>Isi Paket</span>
+                        <strong>500 PCS</strong>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="paket3.html" class="btn-pilih">LIHAT BONUS</a>
+                </div>
+            </div>
+
+        </div>
+
+                <div class="footer-note">
+            <p>*Syarat & ketentuan berlaku. Mei 2026.<br>
+            <strong>Gandhiyo</strong><br>
+            <strong>Simpel itu - IM3</strong></p>
+            
+            <!-- Link Hubungi Admin Baru -->
+            <a href="https://wa.me/6285759695969" class="admin-contact" target="_blank">
+                Hubungi Admin
+            </a>
+        </div>
+
+    </div>
+
+    </div>
+    <script>
+        // PENGATURAN
+        const CONFIG = {
+            pass: "sagaranten",        // Ubah password di sini
+            expiry: "2026-05-31",   // Tanggal Expired (Format: YYYY-MM-DD)
+        };
+
+        function checkAccess() {
+            const now = new Date();
+            const expiryDate = new Date(CONFIG.expiry);
+
+            // Cek apakah sudah kadaluarsa
+            if (now > expiryDate) {
+                document.getElementById('msg').innerHTML = "❌ LINK SUDAH EXPIRED";
+                document.getElementById('login-form').style.display = "none";
+            }
+        }
+
+        function verify() {
+            const input = document.getElementById('passInput').value;
+            if (input === CONFIG.pass) {
+                // Sembunyikan pintu gerbang, tampilkan konten
+                document.getElementById('gatekeeper').style.display = "none";
+                document.getElementById('main-content').style.display = "block";
+            } else {
+                alert("Password Salah!");
+            }
+        }
+    </script>
+</body>
+</html>
